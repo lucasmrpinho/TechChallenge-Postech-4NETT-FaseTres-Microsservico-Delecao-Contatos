@@ -1,7 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Core.Entities;
+using Postech.GroupEight.TechChallenge.ContactDelete.Core.Entities;
 
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.Core.Exceptions.Common
+namespace Postech.GroupEight.TechChallenge.ContactDelete.Core.Exceptions.Common
 {
     [ExcludeFromCodeCoverage]
     public class EntityInactiveException(string message) : DomainException(message)

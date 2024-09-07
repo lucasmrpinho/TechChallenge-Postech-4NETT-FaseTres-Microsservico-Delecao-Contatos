@@ -1,7 +1,7 @@
 using System.Text.Json;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Http.Deserializers.Exceptions;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Http.Deserializers.Exceptions;
 
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Http.Deserializers
+namespace Postech.GroupEight.TechChallenge.ContactDelete.Infra.Http.Deserializers
 {
     public static class HttpRequestDeserializer
     {

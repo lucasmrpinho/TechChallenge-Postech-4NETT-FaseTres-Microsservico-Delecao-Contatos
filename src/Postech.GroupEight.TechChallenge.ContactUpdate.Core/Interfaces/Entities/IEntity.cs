@@ -1,4 +1,4 @@
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.Core.Interfaces.Entities
+namespace Postech.GroupEight.TechChallenge.ContactDelete.Core.Interfaces.Entities
 {
     public interface IEntity
     {

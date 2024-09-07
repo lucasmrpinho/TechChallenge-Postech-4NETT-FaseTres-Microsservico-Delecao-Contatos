@@ -1,7 +1,7 @@
-using Postech.GroupEight.TechChallenge.ContactUpdate.Core.Enumerators;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Core.Exceptions.ValueObjects;
+using Postech.GroupEight.TechChallenge.ContactDelete.Core.Enumerators;
+using Postech.GroupEight.TechChallenge.ContactDelete.Core.Exceptions.ValueObjects;
 
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.Core.ValueObjects
+namespace Postech.GroupEight.TechChallenge.ContactDelete.Core.ValueObjects
 {
     public record RegionValueObject
     {

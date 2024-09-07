@@ -1,7 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.Extensions.Primitives;
 
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.Core.Extensions.Common 
+namespace Postech.GroupEight.TechChallenge.ContactDelete.Core.Extensions.Common 
 {
     [ExcludeFromCodeCoverage]
     public static class StringValuesExtensions

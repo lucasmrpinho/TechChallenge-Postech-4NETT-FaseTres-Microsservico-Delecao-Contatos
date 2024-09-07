@@ -1,4 +1,4 @@
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.Application.Events.Results.Enumerators 
+namespace Postech.GroupEight.TechChallenge.ContactDelete.Application.Events.Results.Enumerators 
 {
     public enum PublishEventStatus
     {

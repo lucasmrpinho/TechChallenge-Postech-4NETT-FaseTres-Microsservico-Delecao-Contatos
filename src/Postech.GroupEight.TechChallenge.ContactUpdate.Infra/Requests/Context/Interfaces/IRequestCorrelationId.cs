@@ -1,4 +1,4 @@
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Requests.Context.Interfaces
+namespace Postech.GroupEight.TechChallenge.ContactDelete.Infra.Requests.Context.Interfaces
 {
     public interface IRequestCorrelationId
     {

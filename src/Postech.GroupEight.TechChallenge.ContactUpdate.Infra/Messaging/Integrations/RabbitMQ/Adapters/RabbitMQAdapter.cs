@@ -1,9 +1,9 @@
 using System.Diagnostics.CodeAnalysis;
 using MassTransit;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Messaging.Headers.Constants;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Messaging.Headers.Interfaces;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Messaging.Headers.Constants;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Messaging.Headers.Interfaces;
 
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Messaging.Integrations.RabbitMQ.Adapters
+namespace Postech.GroupEight.TechChallenge.ContactDelete.Infra.Messaging.Integrations.RabbitMQ.Adapters
 {
     [ExcludeFromCodeCoverage]
     public class RabbitMQAdapter(IPublishEndpoint publishEndpoint) : IQueue

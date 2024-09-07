@@ -1,7 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.Http;
 
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Requests.Extensions
+namespace Postech.GroupEight.TechChallenge.ContactDelete.Infra.Requests.Extensions
 {
     [ExcludeFromCodeCoverage]
     public static class HttpRequestExtensions

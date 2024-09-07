@@ -1,6 +1,6 @@
-using Postech.GroupEight.TechChallenge.ContactUpdate.Api.Setup;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Controllers.Http;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Http.Adapters;
+using Postech.GroupEight.TechChallenge.ContactDelete.Api.Setup;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Controllers.Http;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Http.Adapters;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 IConfigurationRoot configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();

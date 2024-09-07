@@ -1,6 +1,6 @@
-using Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Messaging.Headers.Interfaces;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Messaging.Headers.Interfaces;
 
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Messaging 
+namespace Postech.GroupEight.TechChallenge.ContactDelete.Infra.Messaging 
 {
     public interface IQueue
     {

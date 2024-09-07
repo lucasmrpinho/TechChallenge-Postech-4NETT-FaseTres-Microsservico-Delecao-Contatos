@@ -1,6 +1,6 @@
 using FluentAssertions;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Core.Exceptions.ValueObjects;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Core.ValueObjects;
+using Postech.GroupEight.TechChallenge.ContactDelete.Core.Exceptions.ValueObjects;
+using Postech.GroupEight.TechChallenge.ContactDelete.Core.ValueObjects;
 
 namespace Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests.Suite.Core.ValueObjects
 {

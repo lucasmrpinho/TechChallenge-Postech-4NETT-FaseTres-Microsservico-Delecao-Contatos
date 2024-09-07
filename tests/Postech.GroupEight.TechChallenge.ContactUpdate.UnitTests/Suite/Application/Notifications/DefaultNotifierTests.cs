@@ -1,7 +1,7 @@
 using FluentAssertions;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Application.Notifications;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Application.Notifications.Enumerators;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Application.Notifications.Models;
+using Postech.GroupEight.TechChallenge.ContactDelete.Application.Notifications;
+using Postech.GroupEight.TechChallenge.ContactDelete.Application.Notifications.Enumerators;
+using Postech.GroupEight.TechChallenge.ContactDelete.Application.Notifications.Models;
 
 namespace Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests.Suite.Application.Notifications
 {

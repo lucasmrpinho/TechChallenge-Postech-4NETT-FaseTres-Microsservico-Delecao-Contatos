@@ -1,11 +1,11 @@
 using System.Diagnostics.CodeAnalysis;
 using MassTransit;
 using Postech.GroupEight.TechChallenge.ContactManagement.Events;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Messaging;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Messaging.Integrations.RabbitMQ.Adapters;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Messaging.Integrations.RabbitMQ.Configurations;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Messaging;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Messaging.Integrations.RabbitMQ.Adapters;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Messaging.Integrations.RabbitMQ.Configurations;
 
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.Api.Setup
+namespace Postech.GroupEight.TechChallenge.ContactDelete.Api.Setup
 {
     internal static class RabbitMQSetup
     {
@@ -24,15 +24,15 @@ namespace Postech.GroupEight.TechChallenge.ContactUpdate.Api.Setup
                         h.Username(connectionConfiguration.HostUsername);
                         h.Password(connectionConfiguration.HostPassword);
                     });
-                    cfg.Message<ContactUpdatedEvent>(m => 
+                    cfg.Message<ContactDeletedEvent>(m => 
                     {
                         m.SetEntityName(connectionConfiguration.MessageConfiguration.EntityName);
                     });
-                    cfg.Publish<ContactUpdatedEvent>(p => 
+                    cfg.Publish<ContactDeletedEvent>(p => 
                     {
                         p.ExchangeType = connectionConfiguration.PublishConfiguration.ExchangeType;
                     });
-                    cfg.Send<ContactUpdatedEvent>(s =>
+                    cfg.Send<ContactDeletedEvent>(s =>
                     {
                         s.UseRoutingKeyFormatter(context => context.Message.EventType);
                     });
@@ -43,12 +43,12 @@ namespace Postech.GroupEight.TechChallenge.ContactUpdate.Api.Setup
                         cb.ActiveThreshold = connectionConfiguration.CircuitBreakerConfiguration.ActiveThreshold;
                         cb.ResetInterval = TimeSpan.FromMinutes(connectionConfiguration.CircuitBreakerConfiguration.ResetIntervalInMinutes); 
                     });
-                    cfg.ReceiveEndpoint("contact.update", re =>
+                    cfg.ReceiveEndpoint("contact.delete", re =>
                     {
                         re.ConfigureConsumeTopology = false;
                         re.Bind("contact.management", e =>
                         {
-                            e.RoutingKey = nameof(ContactUpdatedEvent);
+                            e.RoutingKey = nameof(ContactDeletedEvent);
                             e.ExchangeType = "direct";
                         });
                     });

@@ -1,22 +1,22 @@
 using Postech.GroupEight.TechChallenge.ContactManagement.Events;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Application.Events.Interfaces;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Application.Events.Results;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Application.Events.Results.Enumerators;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Messaging.Headers;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Requests.Context.Interfaces;
+using Postech.GroupEight.TechChallenge.ContactDelete.Application.Events.Interfaces;
+using Postech.GroupEight.TechChallenge.ContactDelete.Application.Events.Results;
+using Postech.GroupEight.TechChallenge.ContactDelete.Application.Events.Results.Enumerators;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Messaging.Headers;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Requests.Context.Interfaces;
 
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Messaging.Publishers
+namespace Postech.GroupEight.TechChallenge.ContactDelete.Infra.Messaging.Publishers
 {
-    public class ContactUpdatedEventPublisher(IQueue queue, IRequestCorrelationId requestCorrelationId) : IEventPublisher<ContactUpdatedEvent>
+    public class ContactDeletedEventPublisher(IQueue queue, IRequestCorrelationId requestCorrelationId) : IEventPublisher<ContactDeletedEvent>
     {
         private readonly IQueue _queue = queue;
         private readonly IRequestCorrelationId _requestCorrelationId = requestCorrelationId;
 
-        public async Task<PublishedEventResult> PublishEventAsync(ContactUpdatedEvent eventData)
+        public async Task<PublishedEventResult> PublishEventAsync(ContactDeletedEvent eventData)
         {
             try 
             {
-                ContactUpdatedQueueMessageHeader header = new(_requestCorrelationId.GetCorrelationId(), eventData.ContactId);
+                ContactDeletedQueueMessageHeader header = new(_requestCorrelationId.GetCorrelationId(), eventData.ContactId);
                 await _queue.PublishMessageAsync(eventData, header);
                 return new() {
                     EventId = eventData.ContactId,

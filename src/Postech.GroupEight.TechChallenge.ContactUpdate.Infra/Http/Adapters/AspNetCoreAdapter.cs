@@ -1,14 +1,14 @@
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Controllers.Http.Commands;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Http.Deserializers;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Http.Interfaces;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Http.Serializers;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Http.Serializers.Results;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Requests.Extensions;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Controllers.Http.Commands;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Http.Deserializers;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Http.Interfaces;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Http.Serializers;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Http.Serializers.Results;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Requests.Extensions;
 
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Http.Adapters
+namespace Postech.GroupEight.TechChallenge.ContactDelete.Infra.Http.Adapters
 {
     [ExcludeFromCodeCoverage]
     public class AspNetCoreAdapter(WebApplication app) : IHttp

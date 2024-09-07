@@ -1,8 +1,8 @@
 using System.Diagnostics.CodeAnalysis;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Core.Enumerators;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Core.Exceptions.Common;
+using Postech.GroupEight.TechChallenge.ContactDelete.Core.Enumerators;
+using Postech.GroupEight.TechChallenge.ContactDelete.Core.Exceptions.Common;
 
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.Core.Exceptions.ValueObjects
+namespace Postech.GroupEight.TechChallenge.ContactDelete.Core.Exceptions.ValueObjects
 {
     [ExcludeFromCodeCoverage]
     public class InvalidRegionException(string message, RegionNameEnumerator regionName, RegionStateNameEnumerator regionStateName) : DomainException(message)

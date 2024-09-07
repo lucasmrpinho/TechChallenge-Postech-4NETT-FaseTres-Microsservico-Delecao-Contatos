@@ -1,7 +1,7 @@
 using Postech.GroupEight.TechChallenge.ContactManagement.Events.Interfaces;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Application.Events.Results;
+using Postech.GroupEight.TechChallenge.ContactDelete.Application.Events.Results;
 
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.Application.Events.Interfaces 
+namespace Postech.GroupEight.TechChallenge.ContactDelete.Application.Events.Interfaces 
 {
     public interface IEventPublisher<T> 
         where T : IApplicationEvent

@@ -3,25 +3,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Postech.GroupEight.TechChallenge.ContactUpdate.Core", "Postech.GroupEight.TechChallenge.ContactUpdate.Core\Postech.GroupEight.TechChallenge.ContactUpdate.Core.csproj", "{599C15C2-AFF2-4A33-B84B-8A7B41E567AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Postech.GroupEight.TechChallenge.ContactDelete.Core", "Postech.GroupEight.TechChallenge.ContactUpdate.Core\Postech.GroupEight.TechChallenge.ContactDelete.Core.csproj", "{599C15C2-AFF2-4A33-B84B-8A7B41E567AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Postech.GroupEight.TechChallenge.ContactUpdate.Application", "Postech.GroupEight.TechChallenge.ContactUpdate.Application\Postech.GroupEight.TechChallenge.ContactUpdate.Application.csproj", "{FE6DC88F-C024-45AF-9DFE-21BD705D537B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Postech.GroupEight.TechChallenge.ContactDelete.Application", "Postech.GroupEight.TechChallenge.ContactUpdate.Application\Postech.GroupEight.TechChallenge.ContactDelete.Application.csproj", "{FE6DC88F-C024-45AF-9DFE-21BD705D537B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Postech.GroupEight.TechChallenge.ContactUpdate.Infra", "Postech.GroupEight.TechChallenge.ContactUpdate.Infra\Postech.GroupEight.TechChallenge.ContactUpdate.Infra.csproj", "{8A4FE7DD-2BEB-449E-A891-C03C9C515E8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Postech.GroupEight.TechChallenge.ContactDelete.Infra", "Postech.GroupEight.TechChallenge.ContactUpdate.Infra\Postech.GroupEight.TechChallenge.ContactDelete.Infra.csproj", "{8A4FE7DD-2BEB-449E-A891-C03C9C515E8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Postech.GroupEight.TechChallenge.ContactUpdate.Api", "Postech.GroupEight.TechChallenge.ContactUpdate.Api\Postech.GroupEight.TechChallenge.ContactUpdate.Api.csproj", "{D3504680-4D10-4903-9A8D-1596C39C7D8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Postech.GroupEight.TechChallenge.ContactDelete.Api", "Postech.GroupEight.TechChallenge.ContactUpdate.Api\Postech.GroupEight.TechChallenge.ContactDelete.Api.csproj", "{D3504680-4D10-4903-9A8D-1596C39C7D8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests", "..\tests\Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests\Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests.csproj", "{AEBAE3D0-A2AA-472C-B58E-2636749F3C36}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Postech.GroupEight.TechChallenge.ContactDelete.UnitTests", "..\tests\Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests\Postech.GroupEight.TechChallenge.ContactDelete.UnitTests.csproj", "{AEBAE3D0-A2AA-472C-B58E-2636749F3C36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Postech.GroupEight.TechChallenge.ContactUpdate.IntegrationTests", "..\tests\Postech.GroupEight.TechChallenge.ContactUpdate.IntegrationTests\Postech.GroupEight.TechChallenge.ContactUpdate.IntegrationTests.csproj", "{EA7E2E34-4E73-4198-8776-0E053C2F633B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Postech.GroupEight.TechChallenge.ContactDelete.IntegrationTests", "..\tests\Postech.GroupEight.TechChallenge.ContactUpdate.IntegrationTests\Postech.GroupEight.TechChallenge.ContactDelete.IntegrationTests.csproj", "{EA7E2E34-4E73-4198-8776-0E053C2F633B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{599C15C2-AFF2-4A33-B84B-8A7B41E567AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -48,5 +45,11 @@ Global
 		{EA7E2E34-4E73-4198-8776-0E053C2F633B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA7E2E34-4E73-4198-8776-0E053C2F633B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA7E2E34-4E73-4198-8776-0E053C2F633B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D469E2E4-53EA-4D99-ABD7-46DCE5CF5615}
 	EndGlobalSection
 EndGlobal

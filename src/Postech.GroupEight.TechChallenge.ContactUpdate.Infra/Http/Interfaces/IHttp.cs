@@ -1,7 +1,7 @@
 using System.Net;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Controllers.Http.Commands;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Controllers.Http.Commands;
 
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Http.Interfaces
+namespace Postech.GroupEight.TechChallenge.ContactDelete.Infra.Http.Interfaces
 {
     public interface IHttp
     {

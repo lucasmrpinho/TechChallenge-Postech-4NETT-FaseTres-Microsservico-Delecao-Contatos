@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.Core.Enumerators
+namespace Postech.GroupEight.TechChallenge.ContactDelete.Core.Enumerators
 {
     public enum RegionStateNameEnumerator
     {

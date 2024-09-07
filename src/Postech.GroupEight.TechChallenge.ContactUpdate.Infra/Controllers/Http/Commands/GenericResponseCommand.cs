@@ -1,8 +1,8 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Application.Notifications.Models;
+using Postech.GroupEight.TechChallenge.ContactDelete.Application.Notifications.Models;
 
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Controllers.Http.Commands
+namespace Postech.GroupEight.TechChallenge.ContactDelete.Infra.Controllers.Http.Commands
 {
     [ExcludeFromCodeCoverage]
     public record GenericResponseCommand<T>

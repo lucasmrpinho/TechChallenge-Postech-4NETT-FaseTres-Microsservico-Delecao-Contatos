@@ -1,8 +1,8 @@
 using System.Diagnostics.CodeAnalysis;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Requests.Context;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Requests.Context.Interfaces;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Requests.Context;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Requests.Context.Interfaces;
 
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.Api.Setup
+namespace Postech.GroupEight.TechChallenge.ContactDelete.Api.Setup
 {
     [ExcludeFromCodeCoverage]
     internal static class RequestSetup

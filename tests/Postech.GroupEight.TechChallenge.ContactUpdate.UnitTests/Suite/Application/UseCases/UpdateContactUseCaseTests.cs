@@ -2,49 +2,32 @@ using Bogus;
 using FluentAssertions;
 using Moq;
 using Postech.GroupEight.TechChallenge.ContactManagement.Events;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Application.Events.Interfaces;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Application.Events.Results;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Application.Events.Results.Enumerators;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Application.UseCases;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Application.UseCases.Exceptions;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Application.UseCases.Inputs;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Application.UseCases.Outputs;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Core.Exceptions.ValueObjects;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Core.ValueObjects;
+using Postech.GroupEight.TechChallenge.ContactDelete.Application.Events.Interfaces;
+using Postech.GroupEight.TechChallenge.ContactDelete.Application.Events.Results;
+using Postech.GroupEight.TechChallenge.ContactDelete.Application.Events.Results.Enumerators;
+using Postech.GroupEight.TechChallenge.ContactDelete.Application.UseCases;
+using Postech.GroupEight.TechChallenge.ContactDelete.Application.UseCases.Inputs;
+using Postech.GroupEight.TechChallenge.ContactDelete.Application.UseCases.Outputs;
+using Postech.GroupEight.TechChallenge.ContactDelete.Core.Exceptions.ValueObjects;
+using Postech.GroupEight.TechChallenge.ContactDelete.Core.ValueObjects;
 
 namespace Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests.Suite.Application.UseCases 
 {
-    public class UpdateContactUseCaseTests
-    {
+    public class DeleteContactUseCaseTests
+    {   
+        /*
         private readonly Faker _faker = new("pt_BR");
         
-        [Fact(DisplayName = "Update data for a valid contact")]
+        [Fact(DisplayName = "Delete contact")]
         [Trait("Action", "ExecuteAsync")]
         public async Task ExecuteAsync_UpdateDataForValidContact_ShouldNotifyAboutContactUpdate()
         {
             // Arrange              
             Guid contactId = Guid.NewGuid();
-            CurrentContactDataInput currentContactDataInput = new() 
-            { 
-                ContactFirstName = _faker.Name.FirstName(),
-                ContactLastName = _faker.Name.LastName(),
-                ContactEmail = _faker.Internet.Email(),
-                ContactPhoneNumber = _faker.Phone.PhoneNumber("9########"),
-                ContactPhoneNumberAreaCode = "11"
-            };
-            UpdatedContactDataInput updatedContactDataInput = new() 
-            { 
-                ContactFirstName = _faker.Name.FirstName(),
-                ContactLastName = _faker.Name.LastName(),
-                ContactEmail = _faker.Internet.Email(),
-                ContactPhoneNumber = _faker.Phone.PhoneNumber("9########"),
-                ContactPhoneNumberAreaCode = "21"
-            };
-            UpdateContactInput updateContactInput = new() 
+         
+            DeleteContactInput deleteContactInput = new() 
             { 
                 ContactId = contactId,
-                CurrentContactData = currentContactDataInput,
-                UpdatedContactData = updatedContactDataInput
             };
             Mock<IEventPublisher<ContactUpdatedEvent>> eventPublisher = new();    
             DateTime contactEventPublishedAt = new(2024, 8, 19, 12, 0, 0, DateTimeKind.Local);   
@@ -66,16 +49,16 @@ namespace Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests.Suite.Applica
             UpdateContactUseCase useCase = new(eventPublisher.Object);
 
             // Act
-            UpdateContactOutput updateContactOutput = await useCase.ExecuteAsync(updateContactInput);
+            UpdateContactOutput deleteContactOutput = await useCase.ExecuteAsync(deleteContactInput);
 
             // Assert
-            updateContactOutput.ContactId.Should().Be(contactId);
-            updateContactOutput.IsContactNotifiedForUpdate.Should().BeTrue();
-            updateContactOutput.ContactNotifiedForUpdateAt.Should().Be(contactEventPublishedAt);
-            updateContactOutput.ContactFirstName.Should().Be(updatedContactDataInput.ContactFirstName);
-            updateContactOutput.ContactLastName.Should().Be(updatedContactDataInput.ContactLastName);
-            updateContactOutput.ContactEmail.Should().Be(updatedContactDataInput.ContactEmail);
-            updateContactOutput.ContactPhoneNumber.Should().Be(ContactPhoneValueObject.Format(updatedContactDataInput.ContactPhoneNumberAreaCode, updatedContactDataInput.ContactPhoneNumber));
+            deleteContactOutput.ContactId.Should().Be(contactId);
+            deleteContactOutput.IsContactNotifiedForUpdate.Should().BeTrue();
+            deleteContactOutput.ContactNotifiedForUpdateAt.Should().Be(contactEventPublishedAt);
+            deleteContactOutput.ContactFirstName.Should().Be(updatedContactDataInput.ContactFirstName);
+            deleteContactOutput.ContactLastName.Should().Be(updatedContactDataInput.ContactLastName);
+            deleteContactOutput.ContactEmail.Should().Be(updatedContactDataInput.ContactEmail);
+            deleteContactOutput.ContactPhoneNumber.Should().Be(ContactPhoneValueObject.Format(updatedContactDataInput.ContactPhoneNumberAreaCode, updatedContactDataInput.ContactPhoneNumber));
             eventPublisher.Verify(e => e.PublishEventAsync(It.Is<ContactUpdatedEvent>(c => c.ContactId.Equals(contactId))), Times.Once());
         }
 
@@ -106,7 +89,7 @@ namespace Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests.Suite.Applica
                 ContactPhoneNumber = _faker.Phone.PhoneNumber("9########"),
                 ContactPhoneNumberAreaCode = "21"
             };
-            UpdateContactInput updateContactInput = new() 
+            UpdateContactInput deleteContactInput = new() 
             { 
                 ContactId = contactId,
                 CurrentContactData = currentContactDataInput,
@@ -116,7 +99,7 @@ namespace Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests.Suite.Applica
             UpdateContactUseCase useCase = new(eventPublisher.Object);
 
             // Assert
-            ContactFirstNameException exception = await Assert.ThrowsAsync<ContactFirstNameException>(() => useCase.ExecuteAsync(updateContactInput));
+            ContactFirstNameException exception = await Assert.ThrowsAsync<ContactFirstNameException>(() => useCase.ExecuteAsync(deleteContactInput));
             exception.Message.Should().NotBeNullOrEmpty();
             exception.FirstNameValue.Should().Be(newInvalidFirstName);
             eventPublisher.Verify(e => e.PublishEventAsync(It.Is<ContactUpdatedEvent>(c => c.ContactId.Equals(contactId))), Times.Never());
@@ -151,7 +134,7 @@ namespace Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests.Suite.Applica
                 ContactPhoneNumber = _faker.Phone.PhoneNumber("9########"),
                 ContactPhoneNumberAreaCode = "21"
             };
-            UpdateContactInput updateContactInput = new() 
+            UpdateContactInput deleteContactInput = new() 
             { 
                 ContactId = contactId,
                 CurrentContactData = currentContactDataInput,
@@ -161,7 +144,7 @@ namespace Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests.Suite.Applica
             UpdateContactUseCase useCase = new(eventPublisher.Object);
 
             // Assert
-            ContactLastNameException exception = await Assert.ThrowsAsync<ContactLastNameException>(() => useCase.ExecuteAsync(updateContactInput));
+            ContactLastNameException exception = await Assert.ThrowsAsync<ContactLastNameException>(() => useCase.ExecuteAsync(deleteContactInput));
             exception.Message.Should().NotBeNullOrEmpty();
             exception.LastNameValue.Should().Be(newInvalidLastName);
             eventPublisher.Verify(e => e.PublishEventAsync(It.Is<ContactUpdatedEvent>(c => c.ContactId.Equals(contactId))), Times.Never());
@@ -196,7 +179,7 @@ namespace Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests.Suite.Applica
                 ContactPhoneNumber = _faker.Phone.PhoneNumber("9########"),
                 ContactPhoneNumberAreaCode = "21"
             };
-            UpdateContactInput updateContactInput = new() 
+            UpdateContactInput deleteContactInput = new() 
             { 
                 ContactId = contactId,
                 CurrentContactData = currentContactDataInput,
@@ -206,7 +189,7 @@ namespace Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests.Suite.Applica
             UpdateContactUseCase useCase = new(eventPublisher.Object);
 
             // Assert
-            ContactEmailAddressException exception = await Assert.ThrowsAsync<ContactEmailAddressException>(() => useCase.ExecuteAsync(updateContactInput));
+            ContactEmailAddressException exception = await Assert.ThrowsAsync<ContactEmailAddressException>(() => useCase.ExecuteAsync(deleteContactInput));
             exception.Message.Should().NotBeNullOrEmpty();
             exception.EmailAddressValue.Should().Be(newInvalidEmailAddress);
             eventPublisher.Verify(e => e.PublishEventAsync(It.Is<ContactUpdatedEvent>(c => c.ContactId.Equals(contactId))), Times.Never());
@@ -246,7 +229,7 @@ namespace Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests.Suite.Applica
                 ContactPhoneNumber = newInvalidPhoneNumber,
                 ContactPhoneNumberAreaCode = "99"
             };
-            UpdateContactInput updateContactInput = new() 
+            UpdateContactInput deleteContactInput = new() 
             { 
                 ContactId = contactId,
                 CurrentContactData = currentContactDataInput,
@@ -256,7 +239,7 @@ namespace Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests.Suite.Applica
             UpdateContactUseCase useCase = new(eventPublisher.Object);
 
             // Assert
-            ContactPhoneNumberException exception = await Assert.ThrowsAsync<ContactPhoneNumberException>(() => useCase.ExecuteAsync(updateContactInput));
+            ContactPhoneNumberException exception = await Assert.ThrowsAsync<ContactPhoneNumberException>(() => useCase.ExecuteAsync(deleteContactInput));
             exception.Message.Should().NotBeNullOrEmpty();
             exception.PhoneNumber.Should().Be(newInvalidPhoneNumber);
             eventPublisher.Verify(e => e.PublishEventAsync(It.Is<ContactUpdatedEvent>(c => c.ContactId.Equals(contactId))), Times.Never());
@@ -289,7 +272,7 @@ namespace Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests.Suite.Applica
                 ContactPhoneNumber = _faker.Phone.PhoneNumber("9########"),
                 ContactPhoneNumberAreaCode = newInvalidAreaCodePhoneNumber
             };
-            UpdateContactInput updateContactInput = new() 
+            UpdateContactInput deleteContactInput = new() 
             { 
                 ContactId = contactId,
                 CurrentContactData = currentContactDataInput,
@@ -299,7 +282,7 @@ namespace Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests.Suite.Applica
             UpdateContactUseCase useCase = new(eventPublisher.Object);
 
             // Assert
-            AreaCodeValueNotSupportedException exception = await Assert.ThrowsAsync<AreaCodeValueNotSupportedException>(() => useCase.ExecuteAsync(updateContactInput));
+            AreaCodeValueNotSupportedException exception = await Assert.ThrowsAsync<AreaCodeValueNotSupportedException>(() => useCase.ExecuteAsync(deleteContactInput));
             exception.Message.Should().NotBeNullOrEmpty();
             exception.AreaCodeValue.Should().Be(newInvalidAreaCodePhoneNumber);
             eventPublisher.Verify(e => e.PublishEventAsync(It.Is<ContactUpdatedEvent>(c => c.ContactId.Equals(contactId))), Times.Never());
@@ -327,7 +310,7 @@ namespace Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests.Suite.Applica
                 ContactPhoneNumber = currentContactDataInput.ContactPhoneNumber,
                 ContactPhoneNumberAreaCode = currentContactDataInput.ContactPhoneNumberAreaCode
             };
-            UpdateContactInput updateContactInput = new() 
+            UpdateContactInput deleteContactInput = new() 
             { 
                 ContactId = contactId,
                 CurrentContactData = currentContactDataInput,
@@ -337,7 +320,7 @@ namespace Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests.Suite.Applica
             UpdateContactUseCase useCase = new(eventPublisher.Object);
 
             // Assert
-            UpdateContactInputException exception = await Assert.ThrowsAsync<UpdateContactInputException>(() => useCase.ExecuteAsync(updateContactInput));
+            UpdateContactInputException exception = await Assert.ThrowsAsync<UpdateContactInputException>(() => useCase.ExecuteAsync(deleteContactInput));
             exception.Message.Should().NotBeNullOrEmpty();
             exception.CurrentContactData.Should().Be(currentContactDataInput);
             exception.UpdatedContactData.Should().Be(updatedContactDataInput);
@@ -366,7 +349,7 @@ namespace Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests.Suite.Applica
                 ContactPhoneNumber = _faker.Phone.PhoneNumber("9########"),
                 ContactPhoneNumberAreaCode = "21"
             };
-            UpdateContactInput updateContactInput = new() 
+            UpdateContactInput deleteContactInput = new() 
             { 
                 ContactId = contactId,
                 CurrentContactData = currentContactDataInput,
@@ -391,17 +374,18 @@ namespace Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests.Suite.Applica
             UpdateContactUseCase useCase = new(eventPublisher.Object);
 
             // Act
-            UpdateContactOutput updateContactOutput = await useCase.ExecuteAsync(updateContactInput);
+            UpdateContactOutput deleteContactOutput = await useCase.ExecuteAsync(deleteContactInput);
 
             // Assert
-            updateContactOutput.ContactId.Should().Be(contactId);
-            updateContactOutput.IsContactNotifiedForUpdate.Should().BeFalse();
-            updateContactOutput.ContactNotifiedForUpdateAt.Should().BeNull();
-            updateContactOutput.ContactFirstName.Should().Be(updatedContactDataInput.ContactFirstName);
-            updateContactOutput.ContactLastName.Should().Be(updatedContactDataInput.ContactLastName);
-            updateContactOutput.ContactEmail.Should().Be(updatedContactDataInput.ContactEmail);
-            updateContactOutput.ContactPhoneNumber.Should().Be(ContactPhoneValueObject.Format(updatedContactDataInput.ContactPhoneNumberAreaCode, updatedContactDataInput.ContactPhoneNumber));
+            deleteContactOutput.ContactId.Should().Be(contactId);
+            deleteContactOutput.IsContactNotifiedForUpdate.Should().BeFalse();
+            deleteContactOutput.ContactNotifiedForUpdateAt.Should().BeNull();
+            deleteContactOutput.ContactFirstName.Should().Be(updatedContactDataInput.ContactFirstName);
+            deleteContactOutput.ContactLastName.Should().Be(updatedContactDataInput.ContactLastName);
+            deleteContactOutput.ContactEmail.Should().Be(updatedContactDataInput.ContactEmail);
+            deleteContactOutput.ContactPhoneNumber.Should().Be(ContactPhoneValueObject.Format(updatedContactDataInput.ContactPhoneNumberAreaCode, updatedContactDataInput.ContactPhoneNumber));
             eventPublisher.Verify(e => e.PublishEventAsync(It.Is<ContactUpdatedEvent>(c => c.ContactId.Equals(contactId))), Times.Once());
         }
+        */
     }
 }

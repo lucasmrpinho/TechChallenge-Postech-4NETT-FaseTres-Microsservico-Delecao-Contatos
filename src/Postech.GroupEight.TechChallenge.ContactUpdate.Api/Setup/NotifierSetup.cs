@@ -1,8 +1,8 @@
 using System.Diagnostics.CodeAnalysis;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Application.Notifications;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Application.Notifications.Interfaces;
+using Postech.GroupEight.TechChallenge.ContactDelete.Application.Notifications;
+using Postech.GroupEight.TechChallenge.ContactDelete.Application.Notifications.Interfaces;
 
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.Api.Setup
+namespace Postech.GroupEight.TechChallenge.ContactDelete.Api.Setup
 {
     [ExcludeFromCodeCoverage]
     internal static class NotifierSetup

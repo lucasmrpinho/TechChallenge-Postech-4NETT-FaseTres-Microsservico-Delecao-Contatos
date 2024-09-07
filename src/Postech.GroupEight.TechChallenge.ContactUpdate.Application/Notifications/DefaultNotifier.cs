@@ -1,8 +1,8 @@
-using Postech.GroupEight.TechChallenge.ContactUpdate.Application.Notifications.Enumerators;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Application.Notifications.Interfaces;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Application.Notifications.Models;
+using Postech.GroupEight.TechChallenge.ContactDelete.Application.Notifications.Enumerators;
+using Postech.GroupEight.TechChallenge.ContactDelete.Application.Notifications.Interfaces;
+using Postech.GroupEight.TechChallenge.ContactDelete.Application.Notifications.Models;
 
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.Application.Notifications
+namespace Postech.GroupEight.TechChallenge.ContactDelete.Application.Notifications
 {
     public class DefaultNotifier : INotifier
     {

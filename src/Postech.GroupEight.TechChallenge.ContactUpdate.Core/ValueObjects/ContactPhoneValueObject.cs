@@ -1,8 +1,8 @@
 using System.Text.RegularExpressions;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Core.Exceptions.ValueObjects;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Core.Extensions.Common;
+using Postech.GroupEight.TechChallenge.ContactDelete.Core.Exceptions.ValueObjects;
+using Postech.GroupEight.TechChallenge.ContactDelete.Core.Extensions.Common;
 
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.Core.ValueObjects
+namespace Postech.GroupEight.TechChallenge.ContactDelete.Core.ValueObjects
 {
     public partial record ContactPhoneValueObject
     {

@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Messaging.Headers.Constants
+namespace Postech.GroupEight.TechChallenge.ContactDelete.Infra.Messaging.Headers.Constants
 {
     [ExcludeFromCodeCoverage]
     public class QueueMessageHeaderName

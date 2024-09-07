@@ -1,11 +1,11 @@
 using System.Diagnostics.CodeAnalysis;
 using Postech.GroupEight.TechChallenge.ContactManagement.Events;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Messaging.Headers.Interfaces;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Messaging.Headers.Interfaces;
 
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Messaging.Headers
+namespace Postech.GroupEight.TechChallenge.ContactDelete.Infra.Messaging.Headers
 {
     [ExcludeFromCodeCoverage]
-    public class ContactUpdatedQueueMessageHeader(
+    public class ContactDeletedQueueMessageHeader(
         Guid correlationId,
         Guid messageId) 
         : IQueueMessageHeader
@@ -16,13 +16,13 @@ namespace Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Messaging.Headers
 
         public DateTime Timestamp { get; } = DateTime.UtcNow;
 
-        public string Source { get; } = "contact.update.microservice";
+        public string Source { get; } = "contact.delete.microservice";
 
-        public string MessageType { get; } = nameof(ContactUpdatedEvent);
+        public string MessageType { get; } = nameof(ContactDeletedEvent);
 
         public override bool Equals(object? obj)
         {
-            return obj is ContactUpdatedQueueMessageHeader header && MessageId.Equals(header.MessageId);
+            return obj is ContactDeletedQueueMessageHeader header && MessageId.Equals(header.MessageId);
         }
 
         public override int GetHashCode()

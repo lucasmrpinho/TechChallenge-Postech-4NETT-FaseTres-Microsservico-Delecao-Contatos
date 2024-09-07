@@ -1,4 +1,4 @@
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Messaging.Headers.Interfaces
+namespace Postech.GroupEight.TechChallenge.ContactDelete.Infra.Messaging.Headers.Interfaces
 {
     public interface IQueueMessageHeader
     {

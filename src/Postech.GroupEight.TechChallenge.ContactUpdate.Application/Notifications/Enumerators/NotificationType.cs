@@ -1,4 +1,4 @@
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.Application.Notifications.Enumerators
+namespace Postech.GroupEight.TechChallenge.ContactDelete.Application.Notifications.Enumerators
 {
     public enum NotificationType
     {

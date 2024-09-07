@@ -2,9 +2,9 @@ using System.Text.Json;
 using System.Xml.Serialization;
 using Bogus;
 using FluentAssertions;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Controllers.Http.Commands;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Http.Deserializers;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Http.Deserializers.Exceptions;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Controllers.Http.Commands;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Http.Deserializers;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Http.Deserializers.Exceptions;
 
 namespace Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests.Suite.Infra.Http.Deserializers
 {
@@ -17,49 +17,15 @@ namespace Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests.Suite.Infra.H
         public void Deserialize_DeserializeValidRequestCommandInApplicationJsonFormat_ShouldDeserializeRequestCommand()
         {
             // Arrange
-            UpdateContactRequestCommand command = new()
+            DeleteContactRequestCommand command = new()
             {
                 ContactId = Guid.NewGuid(),
-                CurrentContactData = new()
-                {
-                    ContactName = new()
-                    {
-                        FirstName = _faker.Name.FirstName(),
-                        LastName = _faker.Name.LastName()
-                    },
-                    ContactEmail = new()
-                    {
-                        Address = _faker.Internet.Email()
-                    },
-                    ContactPhone = new()
-                    {
-                        AreaCode = "11",
-                        Number = _faker.Phone.PhoneNumber("9########")
-                    }
-                },
-                UpdatedContactData = new()
-                {
-                    ContactName = new()
-                    {
-                        FirstName = _faker.Name.FirstName(),
-                        LastName = _faker.Name.LastName()
-                    },
-                    ContactEmail = new()
-                    {
-                        Address = _faker.Internet.Email()
-                    },
-                    ContactPhone = new()
-                    {
-                        AreaCode = "11",
-                        Number = _faker.Phone.PhoneNumber("9########")
-                    }
-                }
             };
             string requestBody = JsonSerializer.Serialize(command);
             string format = "application/json";
 
             // Act
-            UpdateContactRequestCommand? deserializedCommand = HttpRequestDeserializer.Deserialize<UpdateContactRequestCommand>(requestBody, format);
+            DeleteContactRequestCommand? deserializedCommand = HttpRequestDeserializer.Deserialize<DeleteContactRequestCommand>(requestBody, format);
 
             // Assert
             deserializedCommand.Should().NotBeNull();
@@ -71,52 +37,18 @@ namespace Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests.Suite.Infra.H
         public void Deserialize_DeserializeValidRequestCommandIntoAnUnsupportedFormat_ShouldThrowHttpResponseDeserializerException()
         {
             // Arrange
-            UpdateContactRequestCommand command = new()
+            DeleteContactRequestCommand command = new()
             {
                 ContactId = Guid.NewGuid(),
-                CurrentContactData = new()
-                {
-                    ContactName = new()
-                    {
-                        FirstName = _faker.Name.FirstName(),
-                        LastName = _faker.Name.LastName()
-                    },
-                    ContactEmail = new()
-                    {
-                        Address = _faker.Internet.Email()
-                    },
-                    ContactPhone = new()
-                    {
-                        AreaCode = "11",
-                        Number = _faker.Phone.PhoneNumber("9########")
-                    }
-                },
-                UpdatedContactData = new()
-                {
-                    ContactName = new()
-                    {
-                        FirstName = _faker.Name.FirstName(),
-                        LastName = _faker.Name.LastName()
-                    },
-                    ContactEmail = new()
-                    {
-                        Address = _faker.Internet.Email()
-                    },
-                    ContactPhone = new()
-                    {
-                        AreaCode = "11",
-                        Number = _faker.Phone.PhoneNumber("9########")
-                    }
-                }
             };
-            XmlSerializer xmlSerializer = new(typeof(UpdateContactRequestCommand));
+            XmlSerializer xmlSerializer = new(typeof(DeleteContactRequestCommand));
             using StringWriter stringWriter = new();
             xmlSerializer.Serialize(stringWriter, command);
             string requestBody = stringWriter.ToString();
             string unsupportedFormat = "application/xml";
 
             // Assert
-            HttpResponseDeserializerException exception = Assert.Throws<HttpResponseDeserializerException>(() => HttpRequestDeserializer.Deserialize<UpdateContactRequestCommand>(requestBody, unsupportedFormat));
+            HttpResponseDeserializerException exception = Assert.Throws<HttpResponseDeserializerException>(() => HttpRequestDeserializer.Deserialize<DeleteContactRequestCommand>(requestBody, unsupportedFormat));
             exception.Message.Should().NotBeNullOrEmpty();
             exception.ContentType.Should().Be(unsupportedFormat);
         }
@@ -130,10 +62,10 @@ namespace Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests.Suite.Infra.H
             string format = "application/json";
 
             // Act
-            UpdateContactRequestCommand? deserializedCommand = HttpRequestDeserializer.Deserialize<UpdateContactRequestCommand>(requestBody, format);
+            DeleteContactRequestCommand? deserializedCommand = HttpRequestDeserializer.Deserialize<DeleteContactRequestCommand>(requestBody, format);
 
             // Assert
-            deserializedCommand.Should().Be(default(UpdateContactRequestCommand));
+            deserializedCommand.Should().Be(default(DeleteContactRequestCommand));
         }
 
         [Fact(DisplayName = "Content type not provided")]
@@ -141,49 +73,15 @@ namespace Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests.Suite.Infra.H
         public void Deserialize_ContentTypeNotProvided_ShouldThrowHttpResponseDeserializerException()
         {
             // Arrange
-            UpdateContactRequestCommand command = new()
+            DeleteContactRequestCommand command = new()
             {
                 ContactId = Guid.NewGuid(),
-                CurrentContactData = new()
-                {
-                    ContactName = new()
-                    {
-                        FirstName = _faker.Name.FirstName(),
-                        LastName = _faker.Name.LastName()
-                    },
-                    ContactEmail = new()
-                    {
-                        Address = _faker.Internet.Email()
-                    },
-                    ContactPhone = new()
-                    {
-                        AreaCode = "11",
-                        Number = _faker.Phone.PhoneNumber("9########")
-                    }
-                },
-                UpdatedContactData = new()
-                {
-                    ContactName = new()
-                    {
-                        FirstName = _faker.Name.FirstName(),
-                        LastName = _faker.Name.LastName()
-                    },
-                    ContactEmail = new()
-                    {
-                        Address = _faker.Internet.Email()
-                    },
-                    ContactPhone = new()
-                    {
-                        AreaCode = "11",
-                        Number = _faker.Phone.PhoneNumber("9########")
-                    }
-                }
             };
             string requestBody = JsonSerializer.Serialize(command);
             string? format = null;
 
             // Assert
-            HttpResponseDeserializerException exception = Assert.Throws<HttpResponseDeserializerException>(() => HttpRequestDeserializer.Deserialize<UpdateContactRequestCommand>(requestBody, format));
+            HttpResponseDeserializerException exception = Assert.Throws<HttpResponseDeserializerException>(() => HttpRequestDeserializer.Deserialize<DeleteContactRequestCommand>(requestBody, format));
             exception.Message.Should().NotBeNullOrEmpty();
             exception.ContentType.Should().Be(format);
         }

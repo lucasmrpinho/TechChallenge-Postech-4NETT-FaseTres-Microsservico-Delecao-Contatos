@@ -1,4 +1,4 @@
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Http.Serializers.Results
+namespace Postech.GroupEight.TechChallenge.ContactDelete.Infra.Http.Serializers.Results
 {
     public record HttpResponseSerializeResult
     {

@@ -1,8 +1,8 @@
 using System.Diagnostics.CodeAnalysis;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Core.Exceptions.Common;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Core.Interfaces.Entities;
+using Postech.GroupEight.TechChallenge.ContactDelete.Core.Exceptions.Common;
+using Postech.GroupEight.TechChallenge.ContactDelete.Core.Interfaces.Entities;
 
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.Core.Entities
+namespace Postech.GroupEight.TechChallenge.ContactDelete.Core.Entities
 {
     [ExcludeFromCodeCoverage]
     public abstract class EntityBase : IEntity

@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.Core.Exceptions.Common
+namespace Postech.GroupEight.TechChallenge.ContactDelete.Core.Exceptions.Common
 {
     [ExcludeFromCodeCoverage]
     public class DomainException(string message) : Exception(message)

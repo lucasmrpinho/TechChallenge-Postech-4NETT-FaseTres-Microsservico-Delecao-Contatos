@@ -1,10 +1,10 @@
 using System.Text.Json;
 using FluentAssertions;
 using Microsoft.Extensions.Primitives;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Controllers.Http.Commands;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Http.Serializers;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Http.Serializers.Exceptions;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Http.Serializers.Results;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Controllers.Http.Commands;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Http.Serializers;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Http.Serializers.Exceptions;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Http.Serializers.Results;
 
 namespace Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests.Suite.Infra.Http.Serializers
 {
@@ -18,11 +18,11 @@ namespace Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests.Suite.Infra.H
         public void Serialize_SerializeValidResponseCommandInApplicationJsonFormat_ShouldSerializeResponseCommand(string acceptHeader)
         {
             // Arrange
-            UpdateContactResponseCommand command = new()
+            DeleteContactResponseCommand command = new()
             {
                 ContactId = Guid.NewGuid(),
-                ContactNotifiedForUpdateAt = DateTime.UtcNow,
-                IsContactNotifiedForUpdate = true
+                ContactNotifiedForDeleteAt = DateTime.UtcNow,
+                IsContactNotifiedForDelete = true
             };
 
             // Act
@@ -39,11 +39,11 @@ namespace Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests.Suite.Infra.H
         public void Serialize_SerializeValidResponseCommandIntoAnUnsupportedFormat_ShouldThrowHttpResponseSerializerException()
         {
             // Arrange
-            UpdateContactResponseCommand command = new()
+            DeleteContactResponseCommand command = new()
             {
                 ContactId = Guid.NewGuid(),
-                ContactNotifiedForUpdateAt = DateTime.UtcNow,
-                IsContactNotifiedForUpdate = true
+                ContactNotifiedForDeleteAt = DateTime.UtcNow,
+                IsContactNotifiedForDelete = true
             };
             StringValues acceptHeader = "application/xml";
 
@@ -58,10 +58,10 @@ namespace Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests.Suite.Infra.H
         public void Serialize_AcceptHeaderNotProvided_ShouldSerializeResponseCommandIntoApplicationJsonFormat()
         {
             // Arrange
-            UpdateContactResponseCommand command = new()
+            DeleteContactResponseCommand command = new()
             {
                 ContactId = Guid.NewGuid(),
-                IsContactNotifiedForUpdate = false
+                IsContactNotifiedForDelete = false
             };
             StringValues acceptHeader = [];
 

@@ -1,10 +1,10 @@
 using System.Text.Json;
 using Microsoft.Extensions.Primitives;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Core.Extensions.Common;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Http.Serializers.Exceptions;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Http.Serializers.Results;
+using Postech.GroupEight.TechChallenge.ContactDelete.Core.Extensions.Common;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Http.Serializers.Exceptions;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Http.Serializers.Results;
 
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Http.Serializers
+namespace Postech.GroupEight.TechChallenge.ContactDelete.Infra.Http.Serializers
 {
     public static class HttpResponseSerializer
     {

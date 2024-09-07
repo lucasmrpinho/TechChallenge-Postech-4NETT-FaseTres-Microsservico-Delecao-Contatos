@@ -1,6 +1,6 @@
-using Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Requests.Context.Interfaces;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Requests.Context.Interfaces;
 
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Requests.Context
+namespace Postech.GroupEight.TechChallenge.ContactDelete.Infra.Requests.Context
 {
     public record DefaultRequestCorrelationId : IRequestCorrelationId
     {

@@ -1,7 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Application.Events.Results.Enumerators;
+using Postech.GroupEight.TechChallenge.ContactDelete.Application.Events.Results.Enumerators;
 
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.Application.Events.Results 
+namespace Postech.GroupEight.TechChallenge.ContactDelete.Application.Events.Results 
 {
     [ExcludeFromCodeCoverage]
     public record PublishedEventResult

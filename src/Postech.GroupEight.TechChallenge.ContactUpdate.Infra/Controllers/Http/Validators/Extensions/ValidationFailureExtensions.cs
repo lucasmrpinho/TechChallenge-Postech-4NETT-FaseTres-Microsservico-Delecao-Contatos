@@ -1,9 +1,9 @@
 using System.Diagnostics.CodeAnalysis;
 using FluentValidation.Results;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Application.Notifications.Enumerators;
-using Postech.GroupEight.TechChallenge.ContactUpdate.Application.Notifications.Models;
+using Postech.GroupEight.TechChallenge.ContactDelete.Application.Notifications.Enumerators;
+using Postech.GroupEight.TechChallenge.ContactDelete.Application.Notifications.Models;
 
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.Infra.Controllers.Http.Validators.Extensions
+namespace Postech.GroupEight.TechChallenge.ContactDelete.Infra.Controllers.Http.Validators.Extensions
 {
     [ExcludeFromCodeCoverage]
     internal static class ValidationFailureExtensions
