@@ -10,7 +10,7 @@ using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Messaging.Headers;
 using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Messaging.Publishers;
 using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Requests.Context;
 
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests.Suite.Infra.Messaging.Publishers 
+namespace Postech.GroupEight.TechChallenge.ContactDelete.UnitTests.Suite.Infra.Messaging.Publishers 
 {
     public class ContactDeletedEventPublisherTests
     {  

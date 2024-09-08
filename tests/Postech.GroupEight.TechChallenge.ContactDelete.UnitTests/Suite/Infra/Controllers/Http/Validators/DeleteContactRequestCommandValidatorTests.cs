@@ -3,7 +3,7 @@ using FluentValidation.TestHelper;
 using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Controllers.Http.Commands;
 using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Controllers.Http.Validators;
 
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests.Suite.Infra.Controllers.Http.Validators
+namespace Postech.GroupEight.TechChallenge.ContactDelete.UnitTests.Suite.Infra.Controllers.Http.Validators
 {
     public class DeleteContactRequestCommandValidatorTests
     {

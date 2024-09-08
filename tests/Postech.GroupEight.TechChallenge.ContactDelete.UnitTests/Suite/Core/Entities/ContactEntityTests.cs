@@ -3,7 +3,7 @@ using FluentAssertions;
 using Postech.GroupEight.TechChallenge.ContactDelete.Core.Entities;
 using Postech.GroupEight.TechChallenge.ContactDelete.Core.ValueObjects;
 
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests.Suite.Core.Entities
+namespace Postech.GroupEight.TechChallenge.ContactDelete.UnitTests.Suite.Core.Entities
 {
     public class ContactEntityTests
     {

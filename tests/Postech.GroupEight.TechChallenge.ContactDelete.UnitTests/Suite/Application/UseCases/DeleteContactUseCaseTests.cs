@@ -11,7 +11,7 @@ using Postech.GroupEight.TechChallenge.ContactDelete.Application.UseCases.Output
 using Postech.GroupEight.TechChallenge.ContactDelete.Core.Exceptions.ValueObjects;
 using Postech.GroupEight.TechChallenge.ContactDelete.Core.ValueObjects;
 
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests.Suite.Application.UseCases 
+namespace Postech.GroupEight.TechChallenge.ContactDelete.UnitTests.Suite.Application.UseCases 
 {
     public class DeleteContactUseCaseTests
     {   

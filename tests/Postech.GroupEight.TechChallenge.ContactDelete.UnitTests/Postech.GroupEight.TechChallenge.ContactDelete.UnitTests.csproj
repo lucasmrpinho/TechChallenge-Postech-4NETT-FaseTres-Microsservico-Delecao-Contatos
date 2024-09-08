@@ -24,9 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Postech.GroupEight.TechChallenge.ContactUpdate.Core\Postech.GroupEight.TechChallenge.ContactDelete.Core.csproj" />
-    <ProjectReference Include="..\..\src\Postech.GroupEight.TechChallenge.ContactUpdate.Application\Postech.GroupEight.TechChallenge.ContactDelete.Application.csproj" />
-    <ProjectReference Include="..\..\src\Postech.GroupEight.TechChallenge.ContactUpdate.Infra\Postech.GroupEight.TechChallenge.ContactDelete.Infra.csproj" />
+    <ProjectReference Include="..\..\src\Postech.GroupEight.TechChallenge.ContactDelete.Core\Postech.GroupEight.TechChallenge.ContactDelete.Core.csproj" />
+    <ProjectReference Include="..\..\src\Postech.GroupEight.TechChallenge.ContactDelete.Application\Postech.GroupEight.TechChallenge.ContactDelete.Application.csproj" />
+    <ProjectReference Include="..\..\src\Postech.GroupEight.TechChallenge.ContactDelete.Infra\Postech.GroupEight.TechChallenge.ContactDelete.Infra.csproj" />
   </ItemGroup>
 
 </Project>
