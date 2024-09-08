@@ -1,0 +1,6 @@
+@Postech.GroupEight.TechChallenge.ContactDelete.Api_HostAddress = http://localhost:5258
+
+GET {{Postech.GroupEight.TechChallenge.ContactDelete.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

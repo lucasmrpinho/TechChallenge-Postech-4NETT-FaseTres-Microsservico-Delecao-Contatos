@@ -12,7 +12,7 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.Infra.Controllers.Http.
         [JsonPropertyName("isContactNotifiedForDelete")]
         public bool IsContactNotifiedForDelete { get; init; }
 
-        [JsonPropertyName("contactNotifiedForUpdateAt")]
+        [JsonPropertyName("contactNotifiedForDeleteAt")]
         public DateTime? ContactNotifiedForDeleteAt { get; init; }
     }
 }

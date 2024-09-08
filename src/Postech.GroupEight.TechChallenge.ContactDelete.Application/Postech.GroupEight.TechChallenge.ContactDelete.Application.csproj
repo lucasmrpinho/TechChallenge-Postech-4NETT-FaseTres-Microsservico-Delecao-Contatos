@@ -1,11 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\Postech.GroupEight.TechChallenge.ContactUpdate.Core\Postech.GroupEight.TechChallenge.ContactDelete.Core.csproj" />
+    <Compile Remove="UseCases\Exceptions\**" />
+    <EmbeddedResource Remove="UseCases\Exceptions\**" />
+    <None Remove="UseCases\Exceptions\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="UseCases\Exceptions\" />
+    <ProjectReference Include="..\Postech.GroupEight.TechChallenge.ContactDelete.Core\Postech.GroupEight.TechChallenge.ContactDelete.Core.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

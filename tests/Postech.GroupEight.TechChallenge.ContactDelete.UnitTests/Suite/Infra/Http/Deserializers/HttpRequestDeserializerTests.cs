@@ -6,7 +6,7 @@ using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Controllers.Http.Comm
 using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Http.Deserializers;
 using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Http.Deserializers.Exceptions;
 
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests.Suite.Infra.Http.Deserializers
+namespace Postech.GroupEight.TechChallenge.ContactDelete.UnitTests.Suite.Infra.Http.Deserializers
 {
     public class HttpRequestDeserializerTests
     {

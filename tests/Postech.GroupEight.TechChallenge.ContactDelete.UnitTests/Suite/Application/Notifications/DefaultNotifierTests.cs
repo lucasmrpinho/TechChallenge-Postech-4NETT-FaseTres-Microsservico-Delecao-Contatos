@@ -3,7 +3,7 @@ using Postech.GroupEight.TechChallenge.ContactDelete.Application.Notifications;
 using Postech.GroupEight.TechChallenge.ContactDelete.Application.Notifications.Enumerators;
 using Postech.GroupEight.TechChallenge.ContactDelete.Application.Notifications.Models;
 
-namespace Postech.GroupEight.TechChallenge.ContactUpdate.UnitTests.Suite.Application.Notifications
+namespace Postech.GroupEight.TechChallenge.ContactDelete.UnitTests.Suite.Application.Notifications
 {
     public class DefaultNotifierTests
     {

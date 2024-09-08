@@ -13,8 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Postech.GroupEight.TechChallenge.ContactUpdate.Infra\Postech.GroupEight.TechChallenge.ContactDelete.Infra.csproj" />
-    <ProjectReference Include="..\Postech.GroupEight.TechChallenge.ContactUpdate.Application\Postech.GroupEight.TechChallenge.ContactDelete.Application.csproj" />
+    <ProjectReference Include="..\Postech.GroupEight.TechChallenge.ContactDelete.Infra\Postech.GroupEight.TechChallenge.ContactDelete.Infra.csproj" />
+    <ProjectReference Include="..\Postech.GroupEight.TechChallenge.ContactDelete.Application\Postech.GroupEight.TechChallenge.ContactDelete.Application.csproj" />
   </ItemGroup>
 
 </Project>
