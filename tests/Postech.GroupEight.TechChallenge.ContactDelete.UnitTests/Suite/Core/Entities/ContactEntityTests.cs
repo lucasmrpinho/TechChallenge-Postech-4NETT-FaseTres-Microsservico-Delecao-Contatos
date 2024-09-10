@@ -48,8 +48,8 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.UnitTests.Suite.Core.En
         [InlineData("Lucas", "Lucca")]
         [InlineData("Cristiane", "Cristina")]
         [InlineData("Rafael", "Raphael")]
-        [Trait("Action", "UpdateContactName")]
-        public void UpdateContactName_UpdatingContactFirstName_ShouldUpdateContactName(string contactCurrentFirstName, string contactNewFirstName)
+        [Trait("Action", "DeleteContactName")]
+        public void DeleteContactName_UpdatingContactFirstName_ShouldDeleteContactName(string contactCurrentFirstName, string contactNewFirstName)
         {
             // Arrange
             ContactNameValueObject contactName = new(contactCurrentFirstName, _faker.Name.LastName());
@@ -58,7 +58,7 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.UnitTests.Suite.Core.En
             ContactEntity contact = new(_contactId, contactName, contactEmail, contactPhone);
 
             // Act
-            contact.UpdateContactName(contactNewFirstName, contactName.LastName);
+            contact.DeleteContactName(contactNewFirstName, contactName.LastName);
 
             // Assert
             contact.ContactName.Should().NotBe(contactName);
@@ -69,8 +69,8 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.UnitTests.Suite.Core.En
         [InlineData("Ruiz", "Dirani")]
         [InlineData("Silva", "Lima")]
         [InlineData("Souza", "Santos")]
-        [Trait("Action", "UpdateContactName")]
-        public void UpdateContactName_UpdatingContactLastName_ShouldUpdateContactName(string contactCurrentLastName, string contactNewLastName)
+        [Trait("Action", "DeleteContactName")]
+        public void DeleteContactName_UpdatingContactLastName_ShouldDeleteContactName(string contactCurrentLastName, string contactNewLastName)
         {
             // Arrange
             ContactNameValueObject contactName = new(_faker.Name.FirstName(), contactCurrentLastName);
@@ -79,7 +79,7 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.UnitTests.Suite.Core.En
             ContactEntity contact = new(_contactId, contactName, contactEmail, contactPhone);
 
             // Act
-            contact.UpdateContactName(contactName.FirstName, contactNewLastName);
+            contact.DeleteContactName(contactName.FirstName, contactNewLastName);
 
             // Assert
             contact.ContactName.Should().NotBe(contactName);
@@ -90,8 +90,8 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.UnitTests.Suite.Core.En
         [InlineData("Lucas", "Dirani", "Lucca", "Ruiz")]
         [InlineData("Cristiane", "Jesus", "Cristina", "Andrade")]
         [InlineData("Rafael", "Silva", "Raphael", "Souza")]
-        [Trait("Action", "UpdateContactName")]
-        public void UpdateContactName_UpdatingContactFirstNameAndLastName_ShouldUpdateContactName(
+        [Trait("Action", "DeleteContactName")]
+        public void DeleteContactName_UpdatingContactFirstNameAndLastName_ShouldDeleteContactName(
             string contactCurrentFirstName,
             string contactCurrentLastName, 
             string contactNewFirstName,
@@ -104,7 +104,7 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.UnitTests.Suite.Core.En
             ContactEntity contact = new(_contactId, contactName, contactEmail, contactPhone);
 
             // Act
-            contact.UpdateContactName(contactNewFirstName, contactNewLastName);
+            contact.DeleteContactName(contactNewFirstName, contactNewLastName);
 
             // Assert
             contact.ContactName.Should().NotBe(contactName);
@@ -115,8 +115,8 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.UnitTests.Suite.Core.En
         [Theory(DisplayName = "Updating the contact's email address")]
         [InlineData("lucas.dirani@gmail.com", "lucas.ruiz@gmail.com")]
         [InlineData("cristiane.silva@hotmail.com", "cristiane.silva@gmail.com")]
-        [Trait("Action", "UpdateContactEmail")]
-        public void UpdateContactEmail_UpdatingContactEmailAddress_ShouldUpdateContactEmail(string contactCurrentEmailAddress, string contactNewEmailAddress)
+        [Trait("Action", "DeleteContactEmail")]
+        public void DeleteContactEmail_UpdatingContactEmailAddress_ShouldDeleteContactEmail(string contactCurrentEmailAddress, string contactNewEmailAddress)
         {
             // Arrange
             ContactNameValueObject contactName = new(_faker.Name.FirstName(), _faker.Name.LastName());
@@ -125,7 +125,7 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.UnitTests.Suite.Core.En
             ContactEntity contact = new(_contactId, contactName, contactEmail, contactPhone);
 
             // Act
-            contact.UpdateContactEmail(contactNewEmailAddress);
+            contact.DeleteContactEmail(contactNewEmailAddress);
 
             // Assert
             contact.ContactEmail.Should().NotBe(contactEmail);
@@ -135,8 +135,8 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.UnitTests.Suite.Core.En
         [Theory(DisplayName = "Updating the contact's phone number")]
         [InlineData("987654325", "987654330")]
         [InlineData("987654363", "987654370")]
-        [Trait("Action", "UpdateContactPhone")]
-        public void UpdateContactPhone_UpdatingContactPhoneNumber_ShouldUpdateContactPhone(string contactCurrentPhoneNumber, string contactNewPhoneNumber)
+        [Trait("Action", "DeleteContactPhone")]
+        public void DeleteContactPhone_UpdatingContactPhoneNumber_ShouldDeleteContactPhone(string contactCurrentPhoneNumber, string contactNewPhoneNumber)
         {
             // Arrange
             ContactNameValueObject contactName = new(_faker.Name.FirstName(), _faker.Name.LastName());
@@ -146,7 +146,7 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.UnitTests.Suite.Core.En
             ContactEntity contact = new(_contactId, contactName, contactEmail, contactCurrentPhone);
 
             // Act
-            contact.UpdateContactPhone(contactNewPhone);
+            contact.DeleteContactPhone(contactNewPhone);
 
             // Assert
             contact.ContactPhone.Should().NotBe(contactCurrentPhone);
@@ -156,8 +156,8 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.UnitTests.Suite.Core.En
         [Theory(DisplayName = "Updating the contact's area code phone number")]
         [InlineData("11", "13")]
         [InlineData("21", "22")]
-        [Trait("Action", "UpdateContactPhone")]
-        public void UpdateContactPhone_UpdatingContactAreaCodePhoneNumber_ShouldUpdateContactPhone(string contactCurrentAreaCodePhoneNumber, string contactNewAreaCodePhoneNumber)
+        [Trait("Action", "DeleteContactPhone")]
+        public void DeleteContactPhone_UpdatingContactAreaCodePhoneNumber_ShouldDeleteContactPhone(string contactCurrentAreaCodePhoneNumber, string contactNewAreaCodePhoneNumber)
         {
             // Arrange
             ContactNameValueObject contactName = new(_faker.Name.FirstName(), _faker.Name.LastName());
@@ -167,7 +167,7 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.UnitTests.Suite.Core.En
             ContactEntity contact = new(_contactId, contactName, contactEmail, contactCurrentPhone);
 
             // Act
-            contact.UpdateContactPhone(contactNewPhone);
+            contact.DeleteContactPhone(contactNewPhone);
 
             // Assert
             contact.ContactPhone.Should().NotBe(contactCurrentPhone);
@@ -177,8 +177,8 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.UnitTests.Suite.Core.En
         [Theory(DisplayName = "Updating the contact's area code phone number")]
         [InlineData("987654325", "11", "987664355", "13")]
         [InlineData("987654325", "21", "987664355", "22")]
-        [Trait("Action", "UpdateContactPhone")]
-        public void UpdateContactPhone_UpdatingContactPhoneNumberAndAreaCodePhoneNumber_ShouldUpdateContactPhone(
+        [Trait("Action", "DeleteContactPhone")]
+        public void DeleteContactPhone_UpdatingContactPhoneNumberAndAreaCodePhoneNumber_ShouldDeleteContactPhone(
             string contactCurrentPhoneNumber,
             string contactCurrentAreaCodePhoneNumber, 
             string contactNewPhoneNumber,
@@ -192,7 +192,7 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.UnitTests.Suite.Core.En
             ContactEntity contact = new(_contactId, contactName, contactEmail, contactCurrentPhone);
 
             // Act
-            contact.UpdateContactPhone(contactNewPhone);
+            contact.DeleteContactPhone(contactNewPhone);
 
             // Assert
             contact.ContactPhone.Should().NotBe(contactCurrentPhone);

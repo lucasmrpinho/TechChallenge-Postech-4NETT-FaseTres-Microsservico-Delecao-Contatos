@@ -2,6 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.Extensions.DependencyInjection;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Http.Interfaces;
 using Postech.GroupEight.TechChallenge.ContactDelete.Application.Notifications.Enumerators;
 using Postech.GroupEight.TechChallenge.ContactDelete.Application.Notifications.Interfaces;
 using Postech.GroupEight.TechChallenge.ContactDelete.Application.Notifications.Models;
@@ -10,7 +11,6 @@ using Postech.GroupEight.TechChallenge.ContactDelete.Application.UseCases.Output
 using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Controllers.Http.Commands;
 using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Controllers.Http.Commands.Extensions;
 using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Controllers.Http.Validators.Extensions;
-using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Http.Interfaces;
 
 namespace Postech.GroupEight.TechChallenge.ContactDelete.Infra.Controllers.Http
 {
@@ -20,7 +20,7 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.Infra.Controllers.Http
         public ContactsController(IHttp http)
         {
             http.On<DeleteContactRequestCommand, DeleteContactResponseCommand>("PATCH", "/contacts/{contactId}", async (body, routeValues, serviceProvider) =>
-            {     
+            {
                 INotifier notifier = serviceProvider.GetRequiredService<INotifier>();
                 if (body is null)
                 {
@@ -28,11 +28,11 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.Infra.Controllers.Http
                     return new() { Messages = notifier.GetNotifications() };
                 }
                 _ = Guid.TryParse(routeValues["contactId"]?.ToString(), out Guid contactId);
-                if (!body.HasSameContactId(contactId))  
+                if (!body.HasSameContactId(contactId))
                 {
                     notifier.Handle(new Notification() { Message = "Contact identifier is different between route and body parameter", Type = NotificationType.Error });
                     return new() { Messages = notifier.GetNotifications() };
-                }       
+                }
                 IValidator<DeleteContactRequestCommand> validator = serviceProvider.GetRequiredService<IValidator<DeleteContactRequestCommand>>();
                 ValidationResult validationResult = await validator.ValidateAsync(body);
                 if (!validationResult.IsValid)
@@ -41,13 +41,16 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.Infra.Controllers.Http
                     return new() { Messages = notifier.GetNotifications() };
                 }
                 IDeleteContactUseCase useCase = serviceProvider.GetRequiredService<IDeleteContactUseCase>();
-                DeleteContactOutput deleteContactOutput = await useCase.ExecuteAsync(body.AsDeleteContactInput());
-                if (!deleteContactOutput.IsContactNotifiedForDelete)
+                DeleteContactOutput? updateContactOutput = null;
+                
+                updateContactOutput = await useCase.ExecuteAsync(body.AsDeleteContactInput());
+                if (!updateContactOutput.IsContactNotifiedForDelete)
                 {
-                    notifier.Handle(new Notification() { Message = "Unable to request contact deletion. Please try again.", Type = NotificationType.Error });
+                    notifier.Handle(new Notification() { Message = "Unable to request contact update. Please try again.", Type = NotificationType.Error });
                     return new() { Messages = notifier.GetNotifications() };
                 }
-                return new() { Data = deleteContactOutput.AsDeleteContactResponseCommand() };
+                
+                return new() { Data = updateContactOutput?.AsDeleteContactResponseCommand() };
             });
         }
     }
