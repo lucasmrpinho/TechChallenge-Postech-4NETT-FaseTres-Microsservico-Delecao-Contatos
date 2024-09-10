@@ -41,16 +41,16 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.Infra.Controllers.Http
                     return new() { Messages = notifier.GetNotifications() };
                 }
                 IDeleteContactUseCase useCase = serviceProvider.GetRequiredService<IDeleteContactUseCase>();
-                DeleteContactOutput? updateContactOutput = null;
+                DeleteContactOutput? deleteContactOutput = null;
                 
-                updateContactOutput = await useCase.ExecuteAsync(body.AsDeleteContactInput());
-                if (!updateContactOutput.IsContactNotifiedForDelete)
+                deleteContactOutput = await useCase.ExecuteAsync(body.AsDeleteContactInput());
+                if (!deleteContactOutput.IsContactNotifiedForDelete)
                 {
-                    notifier.Handle(new Notification() { Message = "Unable to request contact update. Please try again.", Type = NotificationType.Error });
+                    notifier.Handle(new Notification() { Message = "Unable to request contact deletion. Please try again.", Type = NotificationType.Error });
                     return new() { Messages = notifier.GetNotifications() };
                 }
                 
-                return new() { Data = updateContactOutput?.AsDeleteContactResponseCommand() };
+                return new() { Data = deleteContactOutput?.AsDeleteContactResponseCommand() };
             });
         }
     }
