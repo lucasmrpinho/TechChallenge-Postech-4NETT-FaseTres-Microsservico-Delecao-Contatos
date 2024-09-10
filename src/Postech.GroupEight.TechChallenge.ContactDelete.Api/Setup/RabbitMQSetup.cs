@@ -1,9 +1,10 @@
 using System.Diagnostics.CodeAnalysis;
 using MassTransit;
-using Postech.GroupEight.TechChallenge.ContactManagement.Events;
-using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Messaging;
 using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Messaging.Integrations.RabbitMQ.Adapters;
 using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Messaging.Integrations.RabbitMQ.Configurations;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Messaging;
+using Postech.GroupEight.TechChallenge.ContactManagement.Events;
+
 
 namespace Postech.GroupEight.TechChallenge.ContactDelete.Api.Setup
 {
@@ -24,11 +25,11 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.Api.Setup
                         h.Username(connectionConfiguration.HostUsername);
                         h.Password(connectionConfiguration.HostPassword);
                     });
-                    cfg.Message<ContactDeletedEvent>(m => 
+                    cfg.Message<ContactDeletedEvent>(m =>
                     {
                         m.SetEntityName(connectionConfiguration.MessageConfiguration.EntityName);
                     });
-                    cfg.Publish<ContactDeletedEvent>(p => 
+                    cfg.Publish<ContactDeletedEvent>(p =>
                     {
                         p.ExchangeType = connectionConfiguration.PublishConfiguration.ExchangeType;
                     });
@@ -41,16 +42,7 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.Api.Setup
                         cb.TrackingPeriod = TimeSpan.FromMinutes(connectionConfiguration.CircuitBreakerConfiguration.TrackingPeriodInMinutes);
                         cb.TripThreshold = connectionConfiguration.CircuitBreakerConfiguration.TripThreshold;
                         cb.ActiveThreshold = connectionConfiguration.CircuitBreakerConfiguration.ActiveThreshold;
-                        cb.ResetInterval = TimeSpan.FromMinutes(connectionConfiguration.CircuitBreakerConfiguration.ResetIntervalInMinutes); 
-                    });
-                    cfg.ReceiveEndpoint("contact.delete", re =>
-                    {
-                        re.ConfigureConsumeTopology = false;
-                        re.Bind("contact.management", e =>
-                        {
-                            e.RoutingKey = nameof(ContactDeletedEvent);
-                            e.ExchangeType = "direct";
-                        });
+                        cb.ResetInterval = TimeSpan.FromMinutes(connectionConfiguration.CircuitBreakerConfiguration.ResetIntervalInMinutes);
                     });
                 });
             });

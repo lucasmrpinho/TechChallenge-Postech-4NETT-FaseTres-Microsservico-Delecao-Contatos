@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Postech.GroupEight.TechChallenge.ContactDelete.Api.Setup;
 using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Controllers.Http;
 using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Http.Adapters;
@@ -27,3 +28,9 @@ app.UseHttpsRedirection();
 AspNetCoreAdapter http = new(app);
 _ = new ContactsController(http);
 http.Run();
+
+[ExcludeFromCodeCoverage]
+public partial class Program
+{
+    protected Program() { }
+}

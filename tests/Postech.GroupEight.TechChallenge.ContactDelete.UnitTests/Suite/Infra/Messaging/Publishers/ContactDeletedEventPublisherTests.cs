@@ -23,7 +23,7 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.UnitTests.Suite.Infra.M
         public async Task PublishEventAsync_EventSuccessfullyPublishedToIntegrationQueue_ShouldReturnResultIndicatingSuccess()
         {
             // Arrange
-            ContactUpdatedEvent contactUpdatedEvent = new()
+            ContactDeletedEvent contactUpdatedEvent = new()
             {
                 ContactId = Guid.NewGuid(),
                 ContactFirstName = _faker.Name.FirstName(),
@@ -31,10 +31,10 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.UnitTests.Suite.Infra.M
                 ContactPhoneNumber = ContactPhoneValueObject.Format("11", _faker.Phone.PhoneNumber("9########")),
                 ContactEmail = _faker.Internet.Email()
             };
-            ContactUpdatedQueueMessageHeader header = new(_requestCorrelationId.GetCorrelationId(), contactUpdatedEvent.ContactId);
+            ContactDeletedQueueMessageHeader header = new(_requestCorrelationId.GetCorrelationId(), contactUpdatedEvent.ContactId);
             Mock<IQueue> queue = new();
             queue.Setup(q => q.PublishMessageAsync(contactUpdatedEvent, header));
-            ContactUpdatedEventPublisher publisher = new(queue.Object, _requestCorrelationId);
+            ContactDeletedEventPublisher publisher = new(queue.Object, _requestCorrelationId);
 
             // Act
             PublishedEventResult result = await publisher.PublishEventAsync(contactUpdatedEvent);
@@ -51,7 +51,7 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.UnitTests.Suite.Infra.M
         public async Task PublishEventAsync_FailedToPublishEventToIntegrationQueue_ShouldReturnResultIndicatingError()
         {
             // Arrange
-            ContactUpdatedEvent contactUpdatedEvent = new()
+            ContactDeletedEvent contactUpdatedEvent = new()
             {
                 ContactId = Guid.NewGuid(),
                 ContactFirstName = _faker.Name.FirstName(),
@@ -59,12 +59,12 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.UnitTests.Suite.Infra.M
                 ContactPhoneNumber = ContactPhoneValueObject.Format("11", _faker.Phone.PhoneNumber("9########")),
                 ContactEmail = _faker.Internet.Email()
             };
-            ContactUpdatedQueueMessageHeader header = new(_requestCorrelationId.GetCorrelationId(), contactUpdatedEvent.ContactId);
+            ContactDeletedQueueMessageHeader header = new(_requestCorrelationId.GetCorrelationId(), contactUpdatedEvent.ContactId);
             Mock<IQueue> queue = new();
             queue
                 .Setup(q => q.PublishMessageAsync(contactUpdatedEvent, header))
                 .ThrowsAsync(new Exception("Failed to publish event to integration queue"));
-            ContactUpdatedEventPublisher publisher = new(queue.Object, _requestCorrelationId);
+            ContactDeletedEventPublisher publisher = new(queue.Object, _requestCorrelationId);
 
             // Assert
             PublishedEventResult result = await publisher.PublishEventAsync(contactUpdatedEvent);
