@@ -14,7 +14,7 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.UnitTests.Suite.Infra.M
 {
     public class ContactDeletedEventPublisherTests
     {  
-        /*
+        
         private readonly Faker _faker = new("pt_BR");
         private readonly DefaultRequestCorrelationId _requestCorrelationId = new();  
         
@@ -23,24 +23,20 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.UnitTests.Suite.Infra.M
         public async Task PublishEventAsync_EventSuccessfullyPublishedToIntegrationQueue_ShouldReturnResultIndicatingSuccess()
         {
             // Arrange
-            ContactDeletedEvent contactUpdatedEvent = new()
+            ContactDeletedEvent contactDeletedEvent = new()
             {
                 ContactId = Guid.NewGuid(),
-                ContactFirstName = _faker.Name.FirstName(),
-                ContactLastName = _faker.Name.LastName(),
-                ContactPhoneNumber = ContactPhoneValueObject.Format("11", _faker.Phone.PhoneNumber("9########")),
-                ContactEmail = _faker.Internet.Email()
             };
-            ContactDeletedQueueMessageHeader header = new(_requestCorrelationId.GetCorrelationId(), contactUpdatedEvent.ContactId);
+            ContactDeletedQueueMessageHeader header = new(_requestCorrelationId.GetCorrelationId(), contactDeletedEvent.ContactId);
             Mock<IQueue> queue = new();
-            queue.Setup(q => q.PublishMessageAsync(contactUpdatedEvent, header));
+            queue.Setup(q => q.PublishMessageAsync(contactDeletedEvent, header));
             ContactDeletedEventPublisher publisher = new(queue.Object, _requestCorrelationId);
 
             // Act
-            PublishedEventResult result = await publisher.PublishEventAsync(contactUpdatedEvent);
+            PublishedEventResult result = await publisher.PublishEventAsync(contactDeletedEvent);
 
             // Assert
-            result.EventId.Should().Be(contactUpdatedEvent.ContactId);
+            result.EventId.Should().Be(contactDeletedEvent.ContactId);
             result.PublishedAt.Should().NotBeNull().And.BeOnOrBefore(DateTime.UtcNow);
             result.Status.Should().Be(PublishEventStatus.Success);
             result.Description.Should().Be("Event successfully published to integration queue");
@@ -51,30 +47,25 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.UnitTests.Suite.Infra.M
         public async Task PublishEventAsync_FailedToPublishEventToIntegrationQueue_ShouldReturnResultIndicatingError()
         {
             // Arrange
-            ContactDeletedEvent contactUpdatedEvent = new()
+            ContactDeletedEvent contactDeletedEvent = new()
             {
                 ContactId = Guid.NewGuid(),
-                ContactFirstName = _faker.Name.FirstName(),
-                ContactLastName = _faker.Name.LastName(),
-                ContactPhoneNumber = ContactPhoneValueObject.Format("11", _faker.Phone.PhoneNumber("9########")),
-                ContactEmail = _faker.Internet.Email()
             };
-            ContactDeletedQueueMessageHeader header = new(_requestCorrelationId.GetCorrelationId(), contactUpdatedEvent.ContactId);
+            ContactDeletedQueueMessageHeader header = new(_requestCorrelationId.GetCorrelationId(), contactDeletedEvent.ContactId);
             Mock<IQueue> queue = new();
             queue
-                .Setup(q => q.PublishMessageAsync(contactUpdatedEvent, header))
+                .Setup(q => q.PublishMessageAsync(contactDeletedEvent, header))
                 .ThrowsAsync(new Exception("Failed to publish event to integration queue"));
             ContactDeletedEventPublisher publisher = new(queue.Object, _requestCorrelationId);
 
             // Assert
-            PublishedEventResult result = await publisher.PublishEventAsync(contactUpdatedEvent);
+            PublishedEventResult result = await publisher.PublishEventAsync(contactDeletedEvent);
 
             // Assert
-            result.EventId.Should().Be(contactUpdatedEvent.ContactId);
+            result.EventId.Should().Be(contactDeletedEvent.ContactId);
             result.PublishedAt.Should().BeNull();
             result.Status.Should().Be(PublishEventStatus.Error);
             result.Description.Should().Be("Failed to publish event to integration queue");
         }
-        */
     }
 }
