@@ -3,7 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace Postech.GroupEight.TechChallenge.ContactDelete.Infra.Messaging.Headers.Constants
 {
     [ExcludeFromCodeCoverage]
-    public class QueueMessageHeaderName
+    public static class QueueMessageHeaderName
     {
         public const string CorrelationId = "correlationId";
         public const string MessageId = "messageId";

@@ -2,7 +2,6 @@ using System.Diagnostics.CodeAnalysis;
 using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.Extensions.DependencyInjection;
-using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Http.Interfaces;
 using Postech.GroupEight.TechChallenge.ContactDelete.Application.Notifications.Enumerators;
 using Postech.GroupEight.TechChallenge.ContactDelete.Application.Notifications.Interfaces;
 using Postech.GroupEight.TechChallenge.ContactDelete.Application.Notifications.Models;
@@ -11,6 +10,8 @@ using Postech.GroupEight.TechChallenge.ContactDelete.Application.UseCases.Output
 using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Controllers.Http.Commands;
 using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Controllers.Http.Commands.Extensions;
 using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Controllers.Http.Validators.Extensions;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Http.Interfaces;
+using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Http.OpenApi;
 
 namespace Postech.GroupEight.TechChallenge.ContactDelete.Infra.Controllers.Http
 {
@@ -42,7 +43,7 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.Infra.Controllers.Http
                 }
                 IDeleteContactUseCase useCase = serviceProvider.GetRequiredService<IDeleteContactUseCase>();
                 DeleteContactOutput? deleteContactOutput = null;
-                
+               
                 deleteContactOutput = await useCase.ExecuteAsync(body.AsDeleteContactInput());
                 if (!deleteContactOutput.IsContactNotifiedForDelete)
                 {
@@ -51,7 +52,7 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.Infra.Controllers.Http
                 }
                 
                 return new() { Data = deleteContactOutput?.AsDeleteContactResponseCommand() };
-            });
+            }, new ContactDeleteEndpointOpenApiDocumentation());
         }
     }
 }
