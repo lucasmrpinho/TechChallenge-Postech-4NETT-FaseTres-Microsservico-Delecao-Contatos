@@ -20,7 +20,7 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.Infra.Controllers.Http
     {
         public ContactsController(IHttp http)
         {
-            http.On<DeleteContactRequestCommand, DeleteContactResponseCommand>("PATCH", "/contacts/{contactId}", async (body, routeValues, serviceProvider) =>
+            http.On<DeleteContactRequestCommand, DeleteContactResponseCommand>("DELETE", "/contacts/{contactId}", async (body, routeValues, serviceProvider) =>
             {
                 INotifier notifier = serviceProvider.GetRequiredService<INotifier>();
                 if (body is null)
@@ -42,15 +42,13 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.Infra.Controllers.Http
                     return new() { Messages = notifier.GetNotifications() };
                 }
                 IDeleteContactUseCase useCase = serviceProvider.GetRequiredService<IDeleteContactUseCase>();
-                DeleteContactOutput? deleteContactOutput = null;
-               
+                DeleteContactOutput? deleteContactOutput = null;           
                 deleteContactOutput = await useCase.ExecuteAsync(body.AsDeleteContactInput());
                 if (!deleteContactOutput.IsContactNotifiedForDelete)
                 {
                     notifier.Handle(new Notification() { Message = "Unable to request contact deletion. Please try again.", Type = NotificationType.Error });
                     return new() { Messages = notifier.GetNotifications() };
-                }
-                
+                }               
                 return new() { Data = deleteContactOutput?.AsDeleteContactResponseCommand() };
             }, new ContactDeleteEndpointOpenApiDocumentation());
         }

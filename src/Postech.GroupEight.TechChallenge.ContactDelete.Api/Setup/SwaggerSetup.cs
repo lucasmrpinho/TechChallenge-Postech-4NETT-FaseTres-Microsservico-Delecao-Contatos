@@ -1,5 +1,4 @@
 using System.Diagnostics.CodeAnalysis;
-using System.Reflection;
 using Microsoft.OpenApi.Models;
 
 namespace Postech.GroupEight.TechChallenge.ContactDelete.Api.Setup
@@ -13,7 +12,7 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.Api.Setup
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Title = "Contact Update API (Tech Challenge)",
+                    Title = "Contact Delete API (Tech Challenge)",
                     Version = "v1",
                     Description = "Alunos responsáveis: Breno Gomes (RM353570), Lucas Pinho (RM356299), Lucas Ruiz (RM353388), Ricardo Fulgencio (RM354423) e Tatiana Lima (RM353457)",
                     Contact = new OpenApiContact()
@@ -22,8 +21,6 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.Api.Setup
                         Url = new Uri("https://github.com/lucasmrpinho/TechChallenge-Postech-4NETT-FaseTres-Microsservico-Delecao-Contatos")
                     }
                 });
-                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
-                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "Postech.GroupEight.TechChallenge.ContactDelete.Infra.xml"));
                 c.EnableAnnotations();
             });
         }

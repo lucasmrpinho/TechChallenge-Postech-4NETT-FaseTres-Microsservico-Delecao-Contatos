@@ -28,7 +28,7 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.IntegrationTests.Suite.
             };
 
             // Act
-            using HttpResponseMessage responseMessage = await HttpClient.SendAsync(new HttpRequestMessage(HttpMethod.Patch, $"/contacts/{contactId}")
+            using HttpResponseMessage responseMessage = await HttpClient.SendAsync(new HttpRequestMessage(HttpMethod.Delete, $"/contacts/{contactId}")
             {
                 Content = new StringContent(JsonSerializer.Serialize(requestCommand), Encoding.UTF8, "application/json"),
             });
@@ -53,7 +53,7 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.IntegrationTests.Suite.
             Guid contactId = Guid.NewGuid();
 
             // Act
-            using HttpResponseMessage responseMessage = await HttpClient.SendAsync(new HttpRequestMessage(HttpMethod.Patch, $"/contacts/{contactId}"));
+            using HttpResponseMessage responseMessage = await HttpClient.SendAsync(new HttpRequestMessage(HttpMethod.Delete, $"/contacts/{contactId}"));
 
             // Assert
             responseMessage.StatusCode.Should().Be(HttpStatusCode.BadRequest);
@@ -77,7 +77,7 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.IntegrationTests.Suite.
             serializer.Serialize(stringWriter, requestCommand);
 
             // Act
-            using HttpResponseMessage responseMessage = await HttpClient.SendAsync(new HttpRequestMessage(HttpMethod.Patch, $"/contacts/{contactId}")
+            using HttpResponseMessage responseMessage = await HttpClient.SendAsync(new HttpRequestMessage(HttpMethod.Delete, $"/contacts/{contactId}")
             {
                 Content = new StringContent(stringWriter.ToString(), Encoding.UTF8, "application/xml"),
             });
@@ -100,7 +100,7 @@ namespace Postech.GroupEight.TechChallenge.ContactDelete.IntegrationTests.Suite.
             };
 
             // Act
-            using HttpResponseMessage responseMessage = await HttpClient.SendAsync(new HttpRequestMessage(HttpMethod.Patch, $"/contacts/{pathContactId}")
+            using HttpResponseMessage responseMessage = await HttpClient.SendAsync(new HttpRequestMessage(HttpMethod.Delete, $"/contacts/{pathContactId}")
             {
                 Content = new StringContent(JsonSerializer.Serialize(requestCommand), Encoding.UTF8, "application/json"),
             });
