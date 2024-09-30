@@ -5,7 +5,7 @@ using Postech.GroupEight.TechChallenge.ContactDelete.Infra.Http.Adapters;
 using Prometheus;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
-builder.WebHost.UseUrls("http://*:5010");
+builder.WebHost.UseUrls("http://*:5013");
 builder.Configuration.AddJsonFileByEnvironment(builder.Environment.EnvironmentName);
 
 builder.Services.AddEndpointsApiExplorer();
@@ -20,12 +20,9 @@ builder.Services.AddDependencyUseCase();
 
 WebApplication app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.MapSwagger();
-    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Api v1"));
-}
+app.UseSwagger();
+app.MapSwagger();
+app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Api v1"));
 
 app.UseMetricServer();
 app.UseHttpMetrics();

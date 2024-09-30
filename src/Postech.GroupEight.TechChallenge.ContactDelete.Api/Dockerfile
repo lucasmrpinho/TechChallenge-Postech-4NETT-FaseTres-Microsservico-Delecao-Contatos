@@ -1,9 +1,9 @@
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
-EXPOSE 5010
+EXPOSE 5013
 
-ENV ASPNETCORE_URLS=http://+:5010
-ENV ASPNETCORE_HTTP_PORTS=5010
+ENV ASPNETCORE_URLS=http://+:5013
+ENV ASPNETCORE_HTTP_PORTS=5013
 
 USER app
 FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:8.0 AS build

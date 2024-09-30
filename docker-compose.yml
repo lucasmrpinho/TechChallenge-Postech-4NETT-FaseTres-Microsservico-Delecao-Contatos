@@ -3,19 +3,19 @@ version: '3.8'
 services:
 
   # .NET Application
-  dotnet_contactupdate_app:
+  dotnet_contactdelete_app:
     build:
       context: .
       dockerfile: src/Postech.GroupEight.TechChallenge.ContactDelete.Api/Dockerfile
     container_name: dotnet_contactdelete_app
     restart: always
     ports:
-      - "5010:5010"
+      - "5013:5013"
     environment:
       ASPNETCORE_ENVIRONMENT: "Docker"
     networks:
-      - app-network
+      - techchallenge-worker-persistency_custom_network
 
 networks:
-  app-network:
+  techchallenge-worker-persistency_custom_network:
     external: true
